@@ -34,6 +34,18 @@ public class Menu {
     
     public static void main(String[] args) {
 
+
+        //Aqui se archivan las obras.
+
+    Obras obra1 =new Obras(001, "Guernica", "P.Picasso", "Óleo", null, 1000, 5, 2, 5, "cuadro guerra civil");
+    Obras obra2 = new Obras(002, "La Vie", "P.Picasso", "Óleo", null, 200, 1, 1, 1, "óleo");
+    Obras obra3 = new Obras(003, "El Sueño", "P.Picasso", "Óleo", null, 300, 1.3, 1, 1, "óleo");
+    Obras obra4 = new Obras(004, "Retrato de Dora Maar", "P.Picasso", "Óleo", null, 400, 0.8, 1, 5, "óleo");
+    Obras obra5 = new Obras(005, "El piel roja", "U.Checa", null, "Escultura", 350, 0.8, 2, 1, "escultura");
+    Obras Todas_las_obras[] = {obra1, obra2, obra3, obra4, obra5};
+
+        //Aqui empieza el menu.
+
         Scanner sc = new Scanner(System.in);
 
         //muestra el menu principal al iniciar la aplicación
@@ -62,8 +74,10 @@ public class Menu {
                 System.out.println("¿A donde quieres ir? (Usa los numeros correspondientes NO el nombre): ");
                 break;
                 case Obras_expuestas:
-                    System.out.println("Obras espuestas");
-                    System.out.println("¿A donde quieres ir? (Usa los numeros correspondientes NO el nombre): ");
+                    for(int i = 0; i < Todas_las_obras.length; i++){
+                        System.out.println(Todas_las_obras[i]);
+                    }
+                    System.out.println("Pulsa 1 para volver al menú: ");
                     break;
                 case Dar_de_alta:
                     System.out.println("Dar de alta");
