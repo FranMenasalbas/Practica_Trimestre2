@@ -105,42 +105,29 @@ public class Menu {
 
                     System.out.println("Como se llama la obra?: ");
                     sc.nextLine();
-
                     UsuarioDaNombre = sc.nextLine();
-
                     System.out.println("Quien es el autor?: ");
                     UsuarioDaAutor = sc.nextLine();
-
                     System.out.println(
                             "Si es una pintura, porfavor introduzca la tecnica con la que se hecho(si es una escultura pase a la siguiente opción): ");
                     UsuarioDaTecnica = sc.nextLine();
-
                     System.out.println("Si es una escultura, porfavor introduzca de que material está hecha: ");
                     UsuarioDaMaterial = sc.nextLine();
-
                     System.out.println("Por último, introduzca una descripción a la obra: ");
                     UsuarioDaDescripcion = sc.nextLine();
-
                     System.out.println("Guay, ahora pasemos a los números");
-
-                    // sc.nextLine();
-
                     System.out.println("Introduzca el precio base de la obra: ");
                     UsuarioDaPrecio = sc.nextInt();
-
                     System.out.println("Introduzca la altura de la obra (EN METROS): ");
                     UsuarioDaAltura = sc.nextInt();
-
                     System.out.println("Introduzca el peso de la obra (EN TONELADAS): ");
                     UsuarioDaPeso = sc.nextInt();
-
                     System.out.println("Introduzca el número de piezas que componen la obra: ");
                     UsuarioDaPiezas = sc.nextInt();
-
                     Obras ObraNueva = new Obras(MasEspacioParaNuevasObras.length, UsuarioDaNombre, UsuarioDaAutor,
                             UsuarioDaTecnica, UsuarioDaMaterial, UsuarioDaPrecio, UsuarioDaAltura, UsuarioDaPeso,
                             UsuarioDaPiezas, UsuarioDaDescripcion);
-                    
+
                     MasEspacioParaNuevasObras[MasEspacioParaNuevasObras.length - 1] = ObraNueva;
                     todasLasObras = MasEspacioParaNuevasObras;
 
@@ -157,8 +144,12 @@ public class Menu {
                 case Detalles:
                     System.out.println("¿Qué obra quieres ver?: ");
                     UsuarioElijeObra = sc.nextInt();
+                    System.out.println("Nombre de la obra: " + todasLasObras[UsuarioElijeObra-1].getNombre() + ", Autor: "
+                                    + todasLasObras[UsuarioElijeObra-1].getAutor() + ", Altura: " + todasLasObras[UsuarioElijeObra-1].getAltura() + ", Peso: " + todasLasObras[UsuarioElijeObra-1].getPeso()
+                                    + ", Número de piezas: " + todasLasObras[UsuarioElijeObra-1].getPiezas() + ", Descripción: "
+                                    + todasLasObras[UsuarioElijeObra-1].getDescripcion());
 
-                    switch (UsuarioElijeObra) {
+                    /*switch (UsuarioElijeObra) {
                         case 1:
                             System.out.println("Nombre de la obra: " + obra1.getNombre() + ", Autor: "
                                     + obra1.getAutor() + ", Altura: " + obra1.getAltura() + ", Peso: " + obra1.getPeso()
@@ -189,7 +180,7 @@ public class Menu {
                                     + ", Número de piezas: " + obra5.getPiezas() + ", Descripción: "
                                     + obra5.getDescripcion());
                             break;
-                    }
+                    }*/
 
                     System.out.println("Pulsa 8 para volver al menú: ");
                     break;
