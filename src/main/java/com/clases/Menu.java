@@ -20,7 +20,7 @@ public class Menu {
     // Estas son las referencias entre numero de opcion y destino.
 
     private static final int OBRAS_EXPUESTAS = 1; // hecho
-    private static final int DAR_DE_ALTA = 2; // hecho
+    private static final int DAR_DE_ALTA_UNA_NUEVA_OBRA = 2; // hecho
     private static final int MODIFICAR_LOS_DATOS = 3;
     private static final int DETALLES = 4;// hecho
     private static final int PRECIOS = 5; // hecho
@@ -72,7 +72,6 @@ public class Menu {
             String usuarioDaDescripcion = null;
             usuarioDice = sc.nextInt();
 
-            
             if (usuarioDice <= 0 | usuarioDice > 8) {
                 System.out.println(MENSAJE_DE_ERROR);
             }
@@ -98,7 +97,7 @@ public class Menu {
 
                 // Dar de alta.
 
-                case DAR_DE_ALTA:
+                case DAR_DE_ALTA_UNA_NUEVA_OBRA:
 
                     Obras[] MasEspacioParaNuevasObras = new Obras[todasLasObras.length + 1];
                     for (int i = 0; i < todasLasObras.length; i++) {
@@ -174,8 +173,8 @@ public class Menu {
                     double descuentoPorTecnicaPictorica = 0;
                     double descuentoPorSerEscultura = 0;
                     int importePorSerEscultura = 0;
-                    
-                    //calcula los importes y descuentos
+
+                    // calcula los importes y descuentos
 
                     if (todasLasObras[usuarioElijeObra - 1].getPeso() > 1) {
                         importePorPeso = 100;
@@ -184,7 +183,7 @@ public class Menu {
                         importePorAltura = 100;
                     }
                     if (todasLasObras[usuarioElijeObra - 1].getPiezas() > 2) {
-                        for(int i = 0; i < todasLasObras[usuarioElijeObra - 1].getPiezas(); i++){
+                        for (int i = 0; i < todasLasObras[usuarioElijeObra - 1].getPiezas(); i++) {
                             numeroDePiezas++;
                         }
                         importePorPiezas = (numeroDePiezas - 2) * 100;
@@ -204,7 +203,7 @@ public class Menu {
                         importePorSerEscultura = 50;
                     }
 
-                    //calcula el precio
+                    // calcula el precio
 
                     double precioDeVenta = todasLasObras[usuarioElijeObra - 1].getPrecio() + comision + importePorPeso
                             + importePorAltura + importePorPiezas + importePorSerEscultura;
@@ -212,7 +211,7 @@ public class Menu {
                             + importePorAltura + importePorPiezas - descuentoPorTecnicaPictorica
                             - descuentoPorSerEscultura + importePorSerEscultura;
 
-                    //Imprime el precio
+                    // Imprime el precio
 
                     System.out.println("Nombre:" + todasLasObras[usuarioElijeObra - 1].getNombre());
                     System.out.println("Altura:" + todasLasObras[usuarioElijeObra - 1].getAltura());
@@ -222,7 +221,7 @@ public class Menu {
                     System.out.println("Comision de la galería:" + comision);
                     System.out.println("Importe por peso:" + importePorPeso);
                     System.out.println("Importe por altura:" + importePorAltura);
-                    for(int i = 3; i < todasLasObras[usuarioElijeObra - 1].getPiezas() + 1; i++){
+                    for (int i = 3; i < todasLasObras[usuarioElijeObra - 1].getPiezas() + 1; i++) {
                         System.out.println("Importe por pieza " + i + ": 100 euros");
                     }
                     System.out.println("Precio de venta:" + precioDeVenta + " euros");
@@ -230,17 +229,18 @@ public class Menu {
                             | todasLasObras[usuarioElijeObra - 1].getTecnica() == "pictorica"
                             | todasLasObras[usuarioElijeObra - 1].getTecnica() == "Pictórica"
                             | todasLasObras[usuarioElijeObra - 1].getTecnica() == "pictórica") {
-                        System.out.println("Descuento por ser una obra con técnica  pictórica: " + descuentoPorTecnicaPictorica + " euros");
+                        System.out.println("Descuento por ser una obra con técnica  pictórica: "
+                                + descuentoPorTecnicaPictorica + " euros");
                     }
                     if (todasLasObras[usuarioElijeObra - 1].getMaterial() != null
                             | todasLasObras[usuarioElijeObra - 1].getMaterial() == "") {
                         System.out.println("Descuento por ser escultura: " + descuentoPorSerEscultura + " euros");
-                    } 
+                    }
                     if (todasLasObras[usuarioElijeObra - 1].getMaterial() != null
                             | todasLasObras[usuarioElijeObra - 1].getMaterial() == "") {
                         System.out.println("Importe por ser escultura: " + importePorSerEscultura + " euros");
                     }
-                    if (descuentoPorTecnicaPictorica == 0 & descuentoPorSerEscultura == 0){
+                    if (descuentoPorTecnicaPictorica == 0 & descuentoPorSerEscultura == 0) {
                         System.out.println("Ésta obra no tiene descuentos");
                     }
                     System.out.println("Ésta obra cuesta un total de : " + precioTotal + " euros");
@@ -250,7 +250,11 @@ public class Menu {
                 // Etiqueta.
 
                 case ETIQUETA:
-                    System.out.println("Etiqueta");
+                System.out.println("Introduce el ID de la obra que quieras ver su etiqueta: ");
+                usuarioElijeObra = sc.nextInt();
+                    System.out.println("Nombre: " + todasLasObras[usuarioElijeObra - 1].getNombre());
+                    System.out.println("Autor: " + todasLasObras[usuarioElijeObra - 1].getAutor());
+                    System.out.println("Descripcion: " + todasLasObras[usuarioElijeObra - 1].getDescripcion());
                     System.out.println("Pulsa 8 para volver al menú: ");
                     break;
 
@@ -261,6 +265,5 @@ public class Menu {
                     terminar = true;
             }
         }
-
     }
 }
