@@ -6,7 +6,7 @@ public class Menu {
 
     // Esto es lo que se muestra en el menu.
 
-    private static final String PRIMERA_OPCION_DEL_MENU = "1. Obras expuestas";
+    private static final String PRIMERA_OPCION_DEL_MENU = "1. Ver obras expuestas";
     private static final String SEGUNDA_OPCION_DEL_MENU = "2. Dar de alta una nueva obra";
     private static final String TERCERA_OPCION_DEL_MENU = "3. Modificar los datos de una obra";
     private static final String CUARTA_OPCION_DEL_MENU = "4. Datalles de las obras";
@@ -33,6 +33,15 @@ public class Menu {
     private static final String MENSAJE_DE_ERROR = "Opcion incorrecta. Prueba a poner otra opcion";
     private static final String MENSAJE_DE_DESPEDIDA = "Gracias por usar la aplicación de GALERÍA JDWS, le agradeceriamos que fuese a ver las obras en persona";
 
+    /*public static void etiqueta(Obras[] todasLasObras, int usuarioElijeObra){
+        for (int i = 0; i < todasLasObras.length; i++) {
+            if (todasLasObras[i].getId() == usuarioElijeObra) {
+                System.out.println("Nombre: " + todasLasObras[i].getNombre());
+                System.out.println("Autor: " + todasLasObras[i].getAutor());
+                System.out.println("Descripcion: " + todasLasObras[i].getDescripcion());
+            }
+        }
+}*/
     public static void main(String[] args) {
 
         // Aqui se archivan las obras.
@@ -147,16 +156,10 @@ public class Menu {
                 // Detalles.
 
                 case DETALLES:
-                    System.out.println("¿Qué obra quieres ver?: ");
-                    usuarioElijeObra = sc.nextInt();
-                    System.out.println(
-                            "Nombre de la obra: " + todasLasObras[usuarioElijeObra - 1].getNombre() + ", Autor: "
-                                    + todasLasObras[usuarioElijeObra - 1].getAutor() + ", Altura: "
-                                    + todasLasObras[usuarioElijeObra - 1].getAltura() + ", Peso: "
-                                    + todasLasObras[usuarioElijeObra - 1].getPeso()
-                                    + ", Número de piezas: " + todasLasObras[usuarioElijeObra - 1].getPiezas()
-                                    + ", Descripción: "
-                                    + todasLasObras[usuarioElijeObra - 1].getDescripcion());
+                    
+                    DetallesyEtiqueta estoDaLosDetalles = new DetallesyEtiqueta();
+                    estoDaLosDetalles.detalles(usuarioElijeObra, todasLasObras);
+
                     System.out.println("Pulsa 8 para volver al menú: ");
                     break;
 
@@ -165,96 +168,27 @@ public class Menu {
                 case PRECIOS:
                     System.out.println("Introduce el ID de la obra quieres comprar: ");
                     usuarioElijeObra = sc.nextInt();
-                    double comision = (todasLasObras[usuarioElijeObra - 1].getPrecio() * 25) / 100;
-                    double importePorPeso = 20;
-                    double importePorAltura = 20;
-                    int importePorPiezas = 20;
-                    int numeroDePiezas = 0;
-                    double descuentoPorTecnicaPictorica = 0;
-                    double descuentoPorSerEscultura = 0;
-                    int importePorSerEscultura = 0;
 
-                    // calcula los importes y descuentos
-
-                    if (todasLasObras[usuarioElijeObra - 1].getPeso() > 1) {
-                        importePorPeso = 100;
-                    }
-                    if (todasLasObras[usuarioElijeObra - 1].getAltura() > 2) {
-                        importePorAltura = 100;
-                    }
-                    if (todasLasObras[usuarioElijeObra - 1].getPiezas() > 2) {
-                        for (int i = 0; i < todasLasObras[usuarioElijeObra - 1].getPiezas(); i++) {
-                            numeroDePiezas++;
-                        }
-                        importePorPiezas = (numeroDePiezas - 2) * 100;
-                    }
-                    if (todasLasObras[usuarioElijeObra - 1].getTecnica() == "Pictorica"
-                            | todasLasObras[usuarioElijeObra - 1].getTecnica() == "pictorica"
-                            | todasLasObras[usuarioElijeObra - 1].getTecnica() == "Píctorica"
-                            | todasLasObras[usuarioElijeObra - 1].getTecnica() == "píctorica") {
-                        descuentoPorTecnicaPictorica = (todasLasObras[usuarioElijeObra - 1].getPrecio() * 10) / 100;
-                    }
-                    if (todasLasObras[usuarioElijeObra - 1].getMaterial() != null
-                            | todasLasObras[usuarioElijeObra - 1].getMaterial() == "") {
-                        descuentoPorSerEscultura = (todasLasObras[usuarioElijeObra - 1].getPrecio() * 20) / 100;
-                    }
-                    if (todasLasObras[usuarioElijeObra - 1].getMaterial() != null
-                            | todasLasObras[usuarioElijeObra - 1].getMaterial() == "") {
-                        importePorSerEscultura = 50;
-                    }
-
-                    // calcula el precio
-
-                    double precioDeVenta = todasLasObras[usuarioElijeObra - 1].getPrecio() + comision + importePorPeso
-                            + importePorAltura + importePorPiezas + importePorSerEscultura;
-                    double precioTotal = todasLasObras[usuarioElijeObra - 1].getPrecio() + comision + importePorPeso
-                            + importePorAltura + importePorPiezas - descuentoPorTecnicaPictorica
-                            - descuentoPorSerEscultura + importePorSerEscultura;
-
-                    // Imprime el precio
-
-                    System.out.println("Nombre:" + todasLasObras[usuarioElijeObra - 1].getNombre());
-                    System.out.println("Altura:" + todasLasObras[usuarioElijeObra - 1].getAltura());
-                    System.out.println("Peso:" + todasLasObras[usuarioElijeObra - 1].getPeso());
-                    System.out.println("Número de piezas:" + todasLasObras[usuarioElijeObra - 1].getPiezas());
-                    System.out.println("Precio base:" + todasLasObras[usuarioElijeObra - 1].getPrecio() + "euros");
-                    System.out.println("Comision de la galería:" + comision);
-                    System.out.println("Importe por peso:" + importePorPeso);
-                    System.out.println("Importe por altura:" + importePorAltura);
-                    for (int i = 3; i < todasLasObras[usuarioElijeObra - 1].getPiezas() + 1; i++) {
-                        System.out.println("Importe por pieza " + i + ": 100 euros");
-                    }
-                    System.out.println("Precio de venta:" + precioDeVenta + " euros");
-                    if (todasLasObras[usuarioElijeObra - 1].getTecnica() == "Pictorica"
-                            | todasLasObras[usuarioElijeObra - 1].getTecnica() == "pictorica"
-                            | todasLasObras[usuarioElijeObra - 1].getTecnica() == "Pictórica"
-                            | todasLasObras[usuarioElijeObra - 1].getTecnica() == "pictórica") {
-                        System.out.println("Descuento por ser una obra con técnica  pictórica: "
-                                + descuentoPorTecnicaPictorica + " euros");
-                    }
-                    if (todasLasObras[usuarioElijeObra - 1].getMaterial() != null
-                            | todasLasObras[usuarioElijeObra - 1].getMaterial() == "") {
-                        System.out.println("Descuento por ser escultura: " + descuentoPorSerEscultura + " euros");
-                    }
-                    if (todasLasObras[usuarioElijeObra - 1].getMaterial() != null
-                            | todasLasObras[usuarioElijeObra - 1].getMaterial() == "") {
-                        System.out.println("Importe por ser escultura: " + importePorSerEscultura + " euros");
-                    }
-                    if (descuentoPorTecnicaPictorica == 0 & descuentoPorSerEscultura == 0) {
-                        System.out.println("Ésta obra no tiene descuentos");
-                    }
-                    System.out.println("Ésta obra cuesta un total de : " + precioTotal + " euros");
+                    Precios estoDaElPrecio = new Precios();
+                    estoDaElPrecio.precio(todasLasObras, usuarioElijeObra);
+                    
                     System.out.println("Pulsa 8 para volver al menú: ");
                     break;
 
                 // Etiqueta.
 
                 case ETIQUETA:
-                System.out.println("Introduce el ID de la obra que quieras ver su etiqueta: ");
-                usuarioElijeObra = sc.nextInt();
-                    System.out.println("Nombre: " + todasLasObras[usuarioElijeObra - 1].getNombre());
-                    System.out.println("Autor: " + todasLasObras[usuarioElijeObra - 1].getAutor());
-                    System.out.println("Descripcion: " + todasLasObras[usuarioElijeObra - 1].getDescripcion());
+                    System.out.println("Introduce el ID de la obra que quieras ver su etiqueta: ");
+                    usuarioElijeObra = sc.nextInt();
+                    DetallesyEtiqueta estoDaLaEtiqueta = new DetallesyEtiqueta();
+                    estoDaLaEtiqueta.etiqueta(todasLasObras, usuarioElijeObra);
+                    /*for (int i = 0; i < todasLasObras.length; i++) {
+                        if (todasLasObras[i].getId() == usuarioElijeObra) {
+                            System.out.println("Nombre: " + todasLasObras[i].getNombre());
+                            System.out.println("Autor: " + todasLasObras[i].getAutor());
+                            System.out.println("Descripcion: " + todasLasObras[i].getDescripcion());
+                        }
+                    }*/
                     System.out.println("Pulsa 8 para volver al menú: ");
                     break;
 

@@ -26,6 +26,12 @@ public class Obras {
         this.descripcion = descripcion;
     }
 
+    public Obras(String nombre, String autor, String descripcion) {
+        this.nombre = nombre;
+        this.autor = autor;
+        this.descripcion = descripcion;
+    }
+
     public int getId() {
         return id;
     }
@@ -109,7 +115,7 @@ public class Obras {
     @Override
     public String toString() {
         return "Obras [id=" + id + ", nombre=" + nombre + ", autor=" + autor + ", tecnica=" + tecnica + ", material="
-                + material + ", precio=" + precio + ", altura=" + altura + ", peso=" + peso + ", piezas=" + piezas
+                + material + ", precio=" + precio + " euros" +", altura=" + altura + " metros" + ", peso=" + peso + " toneladas" +", piezas=" + piezas
                 + ", descripcion=" + descripcion + "]";
          
     }
