@@ -3,7 +3,7 @@ package com.clases;
 public class Precios {
 
     public void precio(Obras[] todasLasObras, int usuarioElijeObra) {
-        
+
         double comision = (todasLasObras[usuarioElijeObra - 1].getPrecio() * 25) / 100;
         double importePorPeso = 20;
         double importePorAltura = 20;

@@ -2,7 +2,7 @@ package com.clases;
 
 import java.util.Scanner;
 
-public class DetallesyEtiqueta {
+public class DetallesAndEtiqueta {
     public void detalles(int usuarioElijeObra, Obras[] todasLasObras) {
         System.out.println("¿Qué obra quieres ver?: ");
         Scanner sc = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class DetallesyEtiqueta {
         }
     }
 
-    public void etiqueta(Obras[] todasLasObras, int usuarioElijeObra){
+    public void etiqueta(Obras[] todasLasObras, int usuarioElijeObra) {
         for (int i = 0; i < todasLasObras.length; i++) {
             if (todasLasObras[i].getId() == usuarioElijeObra) {
                 System.out.println("Nombre: " + todasLasObras[i].getNombre());
@@ -27,5 +27,5 @@ public class DetallesyEtiqueta {
                 System.out.println("Descripcion: " + todasLasObras[i].getDescripcion());
             }
         }
-}
+    }
 }

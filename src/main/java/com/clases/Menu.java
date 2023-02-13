@@ -33,15 +33,6 @@ public class Menu {
     private static final String MENSAJE_DE_ERROR = "Opcion incorrecta. Prueba a poner otra opcion";
     private static final String MENSAJE_DE_DESPEDIDA = "Gracias por usar la aplicación de GALERÍA JDWS, le agradeceriamos que fuese a ver las obras en persona";
 
-    /*public static void etiqueta(Obras[] todasLasObras, int usuarioElijeObra){
-        for (int i = 0; i < todasLasObras.length; i++) {
-            if (todasLasObras[i].getId() == usuarioElijeObra) {
-                System.out.println("Nombre: " + todasLasObras[i].getNombre());
-                System.out.println("Autor: " + todasLasObras[i].getAutor());
-                System.out.println("Descripcion: " + todasLasObras[i].getDescripcion());
-            }
-        }
-}*/
     public static void main(String[] args) {
 
         // Aqui se archivan las obras.
@@ -132,7 +123,8 @@ public class Menu {
                     usuarioDaPrecio = sc.nextInt();
                     System.out.println("Introduzca la altura de la obra (EN METROS): ");
                     usuarioDaAltura = sc.nextInt();
-                    System.out.println("Introduzca el peso de la obra (EN TONELADAS): ");
+                    System.out.println(
+                            "Introduzca el peso de la obra (EN TONELADAS, minimo una tonelada, aunquesea un double no deja meter decimales): ");
                     usuarioDaPeso = sc.nextInt();
                     System.out.println("Introduzca el número de piezas que componen la obra: ");
                     usuarioDaPiezas = sc.nextInt();
@@ -149,15 +141,18 @@ public class Menu {
                 // Modificar los datos.
 
                 case MODIFICAR_LOS_DATOS:
-                    System.out.println("Modificar los datos de una obra");
+
+                    ModificarDatos estoModificaLosDatos = new ModificarDatos();
+                    estoModificaLosDatos.modificacion(todasLasObras, usuarioElijeObra);
+                    
                     System.out.println("¿Pulsa 8 para volver al menú: ");
                     break;
 
                 // Detalles.
 
                 case DETALLES:
-                    
-                    DetallesyEtiqueta estoDaLosDetalles = new DetallesyEtiqueta();
+
+                    DetallesAndEtiqueta estoDaLosDetalles = new DetallesAndEtiqueta();
                     estoDaLosDetalles.detalles(usuarioElijeObra, todasLasObras);
 
                     System.out.println("Pulsa 8 para volver al menú: ");
@@ -171,7 +166,7 @@ public class Menu {
 
                     Precios estoDaElPrecio = new Precios();
                     estoDaElPrecio.precio(todasLasObras, usuarioElijeObra);
-                    
+
                     System.out.println("Pulsa 8 para volver al menú: ");
                     break;
 
@@ -180,15 +175,8 @@ public class Menu {
                 case ETIQUETA:
                     System.out.println("Introduce el ID de la obra que quieras ver su etiqueta: ");
                     usuarioElijeObra = sc.nextInt();
-                    DetallesyEtiqueta estoDaLaEtiqueta = new DetallesyEtiqueta();
+                    DetallesAndEtiqueta estoDaLaEtiqueta = new DetallesAndEtiqueta();
                     estoDaLaEtiqueta.etiqueta(todasLasObras, usuarioElijeObra);
-                    /*for (int i = 0; i < todasLasObras.length; i++) {
-                        if (todasLasObras[i].getId() == usuarioElijeObra) {
-                            System.out.println("Nombre: " + todasLasObras[i].getNombre());
-                            System.out.println("Autor: " + todasLasObras[i].getAutor());
-                            System.out.println("Descripcion: " + todasLasObras[i].getDescripcion());
-                        }
-                    }*/
                     System.out.println("Pulsa 8 para volver al menú: ");
                     break;
 

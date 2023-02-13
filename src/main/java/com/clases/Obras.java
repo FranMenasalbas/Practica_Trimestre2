@@ -115,8 +115,9 @@ public class Obras {
     @Override
     public String toString() {
         return "Obras [id=" + id + ", nombre=" + nombre + ", autor=" + autor + ", tecnica=" + tecnica + ", material="
-                + material + ", precio=" + precio + " euros" +", altura=" + altura + " metros" + ", peso=" + peso + " toneladas" +", piezas=" + piezas
+                + material + ", precio=" + precio + " euros" + ", altura=" + altura + " metros" + ", peso=" + peso
+                + " toneladas" + ", piezas=" + piezas
                 + ", descripcion=" + descripcion + "]";
-         
+
     }
 }
