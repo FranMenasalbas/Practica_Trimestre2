@@ -25,7 +25,7 @@ public class ModificarDatos {
     private static final String OCTAVA_OPCION_DE_MODIFICACION = "8. Peso";
     private static final String NOVENA_OPCION_DE_MODIFICACION = "9. Piezas";
     private static final String DECIMA_OPCION_DE_MODIFICACION = "10. Descripción";
-    private static final String[] OPCIONES_DEL_DE_MODIFICACION = { PRIMERA_OPCION_DE_MODIFICACION,
+    private static final String[] OPCIONES_DE_MODIFICACION = { PRIMERA_OPCION_DE_MODIFICACION,
             SEGUNDA_OPCION_DE_MODIFICACION, TERCERA_OPCION_DE_MODIFICACION, CUARTA_OPCION_DE_MODIFICACION,
             QUINTA_OPCION_DE_MODIFICACION,
             SEXTA_OPCION_DE_MODIFICACION, SEPTIMA_OPCION_DE_MODIFICACION, OCTAVA_OPCION_DE_MODIFICACION,
@@ -49,8 +49,8 @@ public class ModificarDatos {
 
                 // Éste for muestra un menú que indica las opciones de los datos que puedes
                 // modificar.
-                for (int n = 0; n < OPCIONES_DEL_DE_MODIFICACION.length; n++) {
-                    System.out.println(OPCIONES_DEL_DE_MODIFICACION[n]);
+                for (int n = 0; n < OPCIONES_DE_MODIFICACION.length; n++) {
+                    System.out.println(OPCIONES_DE_MODIFICACION[n]);
                 }
 
                 System.out.println("¿Qué quieres modificar?: ");
@@ -59,7 +59,8 @@ public class ModificarDatos {
                 // Éste switch realiza los cambios.
                 switch (usuarioElijeQueModificar) {
                     case ID:
-                        System.out.println("El ID actual es= " + todasLasObras[i].getId() + ", introduce el nuevo ID: ");
+                        System.out
+                                .println("El ID actual es= " + todasLasObras[i].getId() + ", introduce el nuevo ID: ");
                         nuevoDatoNumerico = sc.nextInt();
                         todasLasObras[i].setId(nuevoDatoNumerico);
                         break;
@@ -121,8 +122,8 @@ public class ModificarDatos {
                         nuevoDatoEscrito = sc.nextLine();
                         todasLasObras[i].setDescripcion(nuevoDatoEscrito);
                         break;
-                }//switch
-            }//if
-        }//for
-    }//public void
-}//fin de la clase
+                }// switch
+            } // if
+        } // for
+    }// public void
+}// fin de la clase

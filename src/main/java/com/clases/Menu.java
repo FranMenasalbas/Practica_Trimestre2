@@ -19,14 +19,14 @@ public class Menu {
 
     // Estas son las referencias entre numero de opcion y destino.
 
-    private static final int OBRAS_EXPUESTAS = 1; // hecho
-    private static final int DAR_DE_ALTA_UNA_NUEVA_OBRA = 2; // hecho
-    private static final int MODIFICAR_LOS_DATOS = 3;
-    private static final int DETALLES = 4;// hecho
-    private static final int PRECIOS = 5; // hecho
+    private static final int OBRAS_EXPUESTAS = 1; 
+    private static final int DAR_DE_ALTA_UNA_NUEVA_OBRA = 2; 
+    private static final int MODIFICAR_LOS_DATOS = 3; 
+    private static final int DETALLES = 4;
+    private static final int PRECIOS = 5;
     private static final int ETIQUETA = 6;
-    private static final int SALIR = 7; // hecho
-    private static final int MENU_PRINCIPAL = 8; // hecho
+    private static final int SALIR = 7; 
+    private static final int MENU_PRINCIPAL = 8; 
 
     private static boolean terminar = false;
 
@@ -123,8 +123,7 @@ public class Menu {
                     usuarioDaPrecio = sc.nextInt();
                     System.out.println("Introduzca la altura de la obra (EN METROS): ");
                     usuarioDaAltura = sc.nextInt();
-                    System.out.println(
-                            "Introduzca el peso de la obra (EN TONELADAS, minimo una tonelada, aunquesea un double no deja meter decimales): ");
+                    System.out.println("Introduzca el peso de la obra (EN TONELADAS): ");
                     usuarioDaPeso = sc.nextInt();
                     System.out.println("Introduzca el número de piezas que componen la obra: ");
                     usuarioDaPiezas = sc.nextInt();
@@ -144,7 +143,7 @@ public class Menu {
 
                     ModificarDatos estoModificaLosDatos = new ModificarDatos();
                     estoModificaLosDatos.modificacion(todasLasObras, usuarioElijeObra);
-                    
+
                     System.out.println("¿Pulsa 8 para volver al menú: ");
                     break;
 
